@@ -50,7 +50,7 @@ const ItemList = () => {
     return (
         <>
             <Container className="mt-3">
-                <Container className="text-center">Merch</Container>
+                <Container className="text-center">Music</Container>
                 {list}
             </Container>
         </>
