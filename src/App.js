@@ -1,15 +1,11 @@
-import React, {useState} from 'react';
-import Nav from 'react-bootstrap/Nav';
-import {Container, Navbar} from 'react-bootstrap';
-import './App.css';
-import ItemList from './component/ItemList';
-import CartContent from './component/Cart/CartContent';
-import Brand from './component/Brand/Brand';
-import CartButton from './component/Cart/CartButton';
+import React,{useState} from "react";
+import Header from './component/Header/Header'
+import Brand from './component/Brand/Brand'
+import StoreItem from "./component/Store/StoreItem";
+import CartContent from './component/Cart/CartContent'
+import CartProvider from "./component/Context/CartProvider";
 
-
-const App = () => {
-
+function App() {
   const [cartdisplay, setcart] = useState(false);
 
   const cartbuttonhandler = () => {
@@ -19,23 +15,15 @@ const App = () => {
     setcart(false);
   };
   return (
-    <>
-      <Navbar bg="dark" expand="sm" variant="dark" >
-        <Container>
-          <Nav className='text-center'>
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#store">store</Nav.Link>
-            <Nav.Link href="#about">about</Nav.Link>
-          </Nav>
-        </Container>
-        <CartButton onshowing ={cartbuttonhandler} />
-      </Navbar>
-     <Brand />
-     {cartdisplay && <CartContent onremove={cartclosebuttonhandler}/>}
-      <ItemList />
-    </>
+    <CartProvider>
+      <div className="container-fluid">
+        <Header onshow={cartbuttonhandler} />
+        <Brand />
+        {cartdisplay && <CartContent onremove={cartclosebuttonhandler} />}
+        <StoreItem />
+      </div>
+    </CartProvider>
+  );
 
-  )
 }
-
 export default App;

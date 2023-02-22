@@ -1,16 +1,16 @@
 .brand {
-    background-color: grey;
-    display: flex;
-    justify-content: space-evenly;
-    padding-bottom: 3%;
-    margin-top: 0.5%;
-    border-top: 2px solid white;
-    width: 101.8%;
-    border-radius: 8px;
-  }
-  #heading {
-    color: white;
-    font-size: 10vw;
-    font-weight: 510;
-    font-family: Georgia, "Times New Roman", Times, serif;
-  }
+  background-color: grey;
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 3%;
+  margin-top: 0.5%;
+  border-top: 2px solid white;
+  width: 101.8%;
+  border-radius: 8px;
+}
+#heading {
+  color: white;
+  font-size: 10vw;
+  font-weight: 510;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
