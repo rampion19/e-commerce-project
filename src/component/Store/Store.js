@@ -12,6 +12,7 @@ const Store = () => {
           <div key={item.id}
             className="col-md-5  mt-4">
             <Card
+              key={item.id}
               id={item.id}
               title={item.title}
               imageUrl={item.imageUrl}

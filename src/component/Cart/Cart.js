@@ -1,5 +1,4 @@
 import React from "react";
-// import Cartbutton from "../Header/CartButton";
 import "./Cart.css";
 
 const Cart = () => {

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Header.css";
 import Cartbutton from "./Cartbutton";
+// import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
   return (
@@ -19,7 +20,7 @@ const Header = (props) => {
             </button>
           </div>
           <div className="header-right">
-          <Cartbutton onshowing={props.onshow} />
+            <Cartbutton onshowing={props.onshow} />
           </div>
         </div>
       </div>

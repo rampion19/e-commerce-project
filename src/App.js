@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Header from './component/Header/Header'
 import Brand from './component/Brand/Brand'
 import StoreItem from "./component/Store/StoreItem";
@@ -20,7 +20,7 @@ function App() {
         <Header onshow={cartbuttonhandler} />
         <Brand />
         {cartdisplay && <CartContent onremove={cartclosebuttonhandler} />}
-        <StoreItem />
+          <StoreItem />
       </div>
     </CartProvider>
   );

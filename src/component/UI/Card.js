@@ -1,8 +1,8 @@
-import { NavLink } from "react-bootstrap";
 import "./Card.css";
 import Input from "./Input";
 import React,{useRef,useContext} from "react";
 import CartContext from "../Context/CartContext";
+import { NavLink } from "react-router-dom";
 
 
 const Card = (props) => {
