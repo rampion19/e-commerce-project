@@ -7,6 +7,7 @@ import CartProvider from "./component/Context/CartProvider";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "./component/Home/Home";
 import About from "./component/About/About";
+import Contact from "./component/Contact Us/Contact";
 
 function App() {
   const [cartdisplay, setcart] = useState(false);
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/about">
             <About />
+          </Route>
+          <Route path="/contact">
+            <Contact />
           </Route>
         </Switch>
         {/* <StoreItem /> */}

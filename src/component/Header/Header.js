@@ -19,6 +19,9 @@ const Header = (props) => {
             <NavLink id="btn" className="btn btn-link" to="/about">
               ABOUT
             </NavLink>
+            <NavLink id="btn" className="btn btn-link" to="/contact">
+              Contact Us
+            </NavLink>
           </div>
           <div className="header-right">
             <Cartbutton onshowing={props.onshow} />
