@@ -1,4 +1,4 @@
-// import { NavLink } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import "./Card.css";
 import Input from "./Input";
 import React,{useRef,useContext} from "react";
@@ -30,9 +30,9 @@ const ctx=useContext(CartContext);
     <div className="card">
       <h2 className="title">{props.title}</h2>
       <div id="wrapper">
-      {/* <NavLink to={`/productdetails/${props.id}`}> */}
+      <NavLink to={`/productdetails/${props.id}`}>
       <img className="images" src={props.imageUrl} alt="color" />
-      {/* </NavLink> */}
+      </NavLink>
       </div>
       <div className="btncart">
         <p id="price">Rs/-{props.price}</p>
