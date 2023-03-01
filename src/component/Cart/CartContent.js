@@ -1,20 +1,37 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Modal from "./Modal";
 import "./CartContent.css";
 import CartItem from "./CartItem";
 import CartContext from "../Context/CartContext";
+import { baseUrl } from "../Context/CartProvider";
+import axios from "axios";
 
 
 const CartContent = (props) => {
 
-  const ctx = useContext(CartContext);
+  const [stateamount, setamount] = useState(0)
 
-  const TotalAmountis = ctx.TotalAmount;
+
+  var amountis = 0;
+
+  axios.get(`${baseUrl}`).then((res) => {
+    for (var i = 0; i < res.data.length; i++) {
+      amountis += res.data[i].amount * res.data[i].price
+    }
+    setamount(amountis)
+  }).catch((err) => {
+    alert(err)
+  })
+  const ctx = useContext(CartContext);
 
   const cartItemRemoveHandler = (id) => {
     ctx.removeItem(id);
-  };
+  }
+
+
+
   const cartitem = ctx.items.map((item) => {
+
     return (
       <React.Fragment key={item.id}>
         <div className="cartitem">
@@ -31,6 +48,7 @@ const CartContent = (props) => {
       </React.Fragment>
     );
   });
+
 
   return (
     <div className="row  justify-content-evenly">
@@ -52,7 +70,7 @@ const CartContent = (props) => {
             <h3 className="bordera">QUANTITY</h3>
           </div>
           {cartitem}
-          <h1 className="cart">Total Rs/{TotalAmountis}</h1>
+          <h1 className="cart">Total Rs/{stateamount}</h1>
         </div>
       </Modal>
     </div>
