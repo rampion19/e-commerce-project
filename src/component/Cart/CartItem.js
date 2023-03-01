@@ -15,7 +15,8 @@ const CartItem = (props) => {
                         <p id="quan" className="btn btn-outline-info">
                             {props.amount}
                         </p>
-                        <button className="btn btn-danger">REMOVE</button>
+                        <button onClick={props.onRemove}
+                            className="btn btn-danger">REMOVE</button>
                     </div>
                 </div>
             </div>
