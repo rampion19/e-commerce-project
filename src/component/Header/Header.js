@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Header.css";
 import Cartbutton from "./Cartbutton";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../Authentication/AuthContext";
+
 
 
 const Header = (props) => {
+  const authCtx = useContext(AuthContext);
+
+  const logOutHandler = () => {
+    authCtx.logout();
+  }
   return (
     <div className="row">
       <div className="col-12 ">
@@ -23,6 +30,9 @@ const Header = (props) => {
               Contact Us
             </NavLink>
           </div>
+          {authCtx.isLoggedIn && <li>
+            <button className={"header-but"} id="btn" onClick={logOutHandler}>Logout</button>
+          </li>}
           <div className="header-right">
             <Cartbutton onshowing={props.onshow} />
           </div>
