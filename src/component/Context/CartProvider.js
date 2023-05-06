@@ -47,7 +47,7 @@ const replacedEmailId = useremailid.replace("@", "").replace(".", "").replace(".
 console.log(replacedEmailId)
 
 
-export const baseUrl = `https://crudcrud.com/api/ce312f1e68544aac870addea617cef8d/${replacedEmailId}`;
+export const baseUrl = `https://crudcrud.com/api/fa542760399647f789693197514a15c9/${replacedEmailId}`;
 
 
 const CartProvider = (props) => {
@@ -56,6 +56,7 @@ const CartProvider = (props) => {
 
   useEffect(() => {
     const getUserData = async () => {
+      
       if (!useremailid) {
         setLoading(false);
         return;
@@ -63,6 +64,7 @@ const CartProvider = (props) => {
 
       try {
         const response = await axios.get(`${baseUrl}`);
+        console.log(response.data)
         setItems(response.data);
         setLoading(false);
       } catch (err) {
@@ -94,8 +96,6 @@ const CartProvider = (props) => {
       }
     }
   };
-
-
 
   const additemhandler = async (item) => {
     const existingCartItem = items.filter(

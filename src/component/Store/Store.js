@@ -4,6 +4,7 @@ import Card from "../UI/Card";
 import { productsArr } from "../Context/CartProvider";
 
 
+
 const Store = () => {
   return (
     <div className="row justify-content-evenly">

@@ -8,7 +8,6 @@ const Ticket = (props) => {
             <span className='font'>{props.title}</span>
             <span className='font'>{props.hall}</span>
             <button className='but'>Buy tickets</button>
-
         </li>
     );
 }

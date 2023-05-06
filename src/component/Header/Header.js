@@ -1,16 +1,21 @@
 import React, { useContext } from "react";
 import "./Header.css";
 import Cartbutton from "./Cartbutton";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import AuthContext from "../Authentication/AuthContext";
 
 
 
 const Header = (props) => {
   const authCtx = useContext(AuthContext);
+  const history = useHistory();
 
   const logOutHandler = () => {
     authCtx.logout();
+    authCtx.items = [];
+    localStorage.removeItem("tokenid");
+    localStorage.removeItem("emailid");
+    history.replace("/")
   }
   return (
     <div className="row">

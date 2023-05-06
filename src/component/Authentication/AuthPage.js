@@ -26,54 +26,45 @@ const AuthPage = () => {
         setIsLoading(true)
         let url;
         if (isLogin) {
-            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDlUoLonh8jMlZG_rKIcWwwNNZUomjYShU'
+            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCeJmK5gfiKXJpcvD24zs7ftI9_Cfr8UmI'
         }
         else {
-            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDlUoLonh8jMlZG_rKIcWwwNNZUomjYShU'
+            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCeJmK5gfiKXJpcvD24zs7ftI9_Cfr8UmI'
         }
-        fetch(
-            url,
-            {
-                method: "POST",
-                body: JSON.stringify({
-                    email: enteredEmail,
-                    password: enteredPassword,
-                    returnSecureToken: true,
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                },
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify({
+                email: enteredEmail,
+                password: enteredPassword,
+                returnSecureToken: true
+            }),
+            headers: {
+                "Content-type": "application/json"
             }
-        ).then(res => {
-            setIsLoading(false);
+        }).then(res => {
+            setIsLoading(false)
             if (res.ok) {
-                emailInputRef.current.value = "";
-                passwordInputRef.current.value = "";
                 return res.json();
             } else {
-                return res.json().then((data) => {
-                    let errmessage = "Authentication Failed";
-                    if (data && data.error && data.error.message) {
-                        errmessage = data.error.message;
-                    }
-                    throw new Error(errmessage);
+                return res.json().then(data => {
+                    let errorMessage = "Authentication failed!"
+                    // if (data && data.error && data.error.message) {
+                    //   errorMessage = data.error.message
+                    // }
+                    throw new Error(errorMessage);
                 });
             }
-        }).then(data => {
-            authCtx.login(data.idToken);
-            localStorage.setItem("token", data.idToken)
-            localStorage.setItem("emailid", data.email)
-            history.replace("/")
-            setTimeout(() => {
-                localStorage.removeItem("token");
-                localStorage.removeItem("emailid");
-                console.log("logedout with timer")
-            }, 300000)
-        }).catch(err => {
-            alert(err.message);
         })
-
-    };
+            .then((data) => {
+                authCtx.login(data.idToken);
+                localStorage.setItem("token", data.idToken)
+                localStorage.setItem("emailid", data.email)
+                history.replace('/');
+            })
+            .catch((err) => {
+                alert(err.message)
+            })
+    }
 
     return (
         <section className={classes.auth}>
